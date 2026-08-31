@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LAWANI Akiram — Sécurité Informatique</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FFFFFF;
+    --surface:#F1F4F2;
+    --surface-2:#EAF1EC;
+    --ink:#171B1E;
+    --muted:#5C6670;
+    --line:#E1E6E3;
+    --accent:#1F6F52;
+    --accent-ink:#FFFFFF;
+    --radius:4px;
+    --maxw:840px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    line-height:1.2;
+    margin:0;
+  }
+  a{color:var(--accent); text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  .mono{font-family:'IBM Plex Mono', monospace;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px;}
+
+  header.site{
+    position:sticky; top:0; z-index:10;
+    background:rgba(255,255,255,0.9);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:16px 24px; max-width:var(--maxw); margin:0 auto;
+  }
+  .nav .brand{font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:15px; color:var(--ink);}
+  .nav .links{display:flex; gap:24px;}
+  .nav .links a{color:var(--muted); font-size:14px;}
+  .nav .links a:hover{color:var(--ink); text-decoration:none;}
+
+  .hero{padding:88px 0 64px;}
+  .status{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'IBM Plex Mono', monospace; font-size:12.5px;
+    color:var(--muted);
+    border:1px solid var(--line);
+    border-radius:999px;
+    padding:6px 14px;
+    margin-bottom:28px;
+  }
+  .dot{width:7px; height:7px; border-radius:50%; background:var(--accent); display:inline-block;}
+  .dot.pulse{animation:pulse 2.2s ease-out 1;}
+  @keyframes pulse{
+    0%{box-shadow:0 0 0 0 rgba(31,111,82,0.45);}
+    100%{box-shadow:0 0 0 10px rgba(31,111,82,0);}
+  }
+  .hero h1{font-size:40px; letter-spacing:-0.01em; margin-bottom:10px;}
+  .hero .role{font-size:18px; color:var(--muted); margin-bottom:22px;}
+  .hero p.lead{max-width:62ch; color:var(--ink); font-size:16px; margin-bottom:32px;}
+  .cta-row{display:flex; gap:14px; flex-wrap:wrap;}
+  .btn{
+    font-size:14px; font-weight:500; padding:11px 20px; border-radius:var(--radius);
+    border:1px solid var(--line);
+    display:inline-block;
+  }
+  .btn.primary{background:var(--ink); color:#fff; border-color:var(--ink);}
+  .btn.primary:hover{background:#000; text-decoration:none;}
+  .btn.ghost{color:var(--ink);}
+  .btn.ghost:hover{border-color:var(--ink); text-decoration:none;}
+
+  section{padding:56px 0; border-top:1px solid var(--line);}
+  .section-head{margin-bottom:32px;}
+  .section-head .label{font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:var(--muted); margin-bottom:6px;}
+  .section-head h2{font-size:26px;}
+
+  .about-grid{display:grid; grid-template-columns:1.4fr 1fr; gap:48px;}
+  .about-grid p{color:var(--ink); max-width:56ch;}
+  .about-grid p + p{margin-top:14px;}
+  .skills-group{margin-bottom:22px;}
+  .skills-group h3{font-size:13px; font-family:'IBM Plex Mono',monospace; font-weight:500; color:var(--muted); margin-bottom:10px;}
+  .tags{display:flex; flex-wrap:wrap; gap:8px;}
+  .tag{
+    font-family:'IBM Plex Mono', monospace; font-size:12.5px;
+    background:var(--surface); border:1px solid var(--line);
+    border-radius:var(--radius); padding:5px 10px; color:var(--ink);
+  }
+
+  .projects{display:flex; flex-direction:column; gap:0;}
+  .project{
+    border:1px solid var(--line); border-radius:var(--radius);
+    padding:26px 28px; margin-bottom:18px;
+  }
+  .project-head{
+    display:flex; justify-content:space-between; align-items:baseline; gap:16px;
+    margin-bottom:10px; flex-wrap:wrap;
+  }
+  .project h3{font-size:19px;}
+  .project .meta{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--muted); white-space:nowrap;}
+  .project p{color:var(--muted); margin:0 0 14px 0; max-width:62ch;}
+  .project .stack{display:flex; flex-wrap:wrap; gap:7px; margin-bottom:14px;}
+  .project .links{display:flex; gap:18px; font-size:13.5px;}
+
+  .next-note{
+    border:1px dashed var(--line); border-radius:var(--radius);
+    padding:18px 22px; color:var(--muted); font-size:14px; max-width:62ch;
+  }
+
+  footer{padding:48px 0 64px; border-top:1px solid var(--line);}
+  .contact-row{display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:24px;}
+  footer h2{font-size:24px; margin-bottom:10px;}
+  footer p{color:var(--muted); max-width:48ch;}
+  .contact-links{display:flex; flex-direction:column; gap:8px; font-family:'IBM Plex Mono',monospace; font-size:14px;}
+  .fine{font-size:12.5px; color:var(--muted); margin-top:40px;}
+
+  @media (max-width:680px){
+    .about-grid{grid-template-columns:1fr;}
+    .hero h1{font-size:32px;}
+    .nav .links{gap:14px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <nav class="nav">
+    <div class="brand">Akiram Lawani</div>
+    <div class="links">
+      <a href="#about">À propos</a>
+      <a href="#projects">Projets</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+</header>
+
+<div class="wrap">
+
+  <section class="hero" style="border-top:none;">
+    <div class="status">
+      <span class="dot pulse"></span>
+      scan 192.168.56.101 — 22/tcp <strong style="color:var(--ink)">open</strong> · 80/tcp <strong style="color:var(--ink)">open</strong>
+    </div>
+    <h1>LAWANI Akiram</h1>
+    <div class="role">Étudiant en Sécurité Informatique — 3ᵉ année, HECM Calavi, Bénin</div>
+    <p class="lead">Je m'intéresse à la sécurité offensive. Ce portfolio présente mes premiers projets pratiques, en commençant par une reconnaissance réseau avec Nmap/Zenmap.</p>
+    <div class="cta-row">
+      <a class="btn primary" href="mailto:lawaniakiram@gmail.com">Me contacter</a>
+      <a class="btn ghost" href="#projects">Voir le projet</a>
+      <!-- <a class="btn ghost" href="CV_LAWANI_Akiram.pdf">Télécharger le CV</a> -->
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="section-head">
+      <div class="label">à propos</div>
+      <h2>Qui je suis</h2>
+    </div>
+    <div class="about-grid">
+      <div>
+        <p>Étudiant en 3ᵉ année de Sécurité Informatique à HECM Calavi (Bénin), je construis progressivement une base solide en réseaux, Linux et en sécurité web.</p>
+        <p>Je pratique régulièrement le pentest web sur l'environnement de laboratoire PortSwigger Web Security Academy, et je m'oriente vers la sécurité offensive.</p>
+      </div>
+      <div>
+        <div class="skills-group">
+          <h3>sécurité</h3>
+          <div class="tags">
+            <span class="tag">Nmap / Zenmap</span>
+            <span class="tag">SQLi, XSS, CSRF</span>
+            <span class="tag">PortSwigger Academy</span>
+          </div>
+        </div>
+        <div class="skills-group">
+          <h3>systèmes &amp; outils</h3>
+          <div class="tags">
+            <span class="tag">Linux (Ubuntu)</span>
+            <span class="tag">VirtualBox</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="section-head">
+      <div class="label">projets</div>
+      <h2>Ce que j'ai construit</h2>
+    </div>
+    <div class="projects">
+
+      <div class="project">
+        <div class="project-head">
+          <h3>Reconnaissance réseau avec Nmap / Zenmap</h3>
+          <span class="meta">2026</span>
+        </div>
+        <p>Audit d'un petit laboratoire virtuel personnel (VM Ubuntu) : configuration réseau, scan de découverte, identification des services exposés (SSH, Apache) et de leurs versions, diagnostic d'un problème de connectivité lié à l'isolation d'un point d'accès Wi-Fi.</p>
+        <div class="stack">
+          <span class="tag">Nmap</span><span class="tag">Zenmap</span><span class="tag">VirtualBox</span><span class="tag">Ubuntu</span>
+        </div>
+        <div class="links">
+          <a href="https://github.com/akiram55/Audit-de-securite-reseau-local">Voir le rapport →</a>
+          <a href="https://github.com/akiram55">Dépôt GitHub →</a>
+        </div>
+      </div>
+
+    </div>
+    <p class="next-note">D'autres projets suivront au fil de ma progression — ce portfolio est amené à grandir.</p>
+  </section>
+
+  <footer id="contact">
+    <div class="contact-row">
+      <div>
+        <h2>Contact</h2>
+        <p>Ouvert aux échanges autour de la cybersécurité, aux opportunités de stage et aux collaborations sur des projets techniques.</p>
+      </div>
+      <div class="contact-links">
+       
+    
+<a href="https://mail.google.com/" target="_blank">
+    lawaniakiram@gmail.com
+</a>
+        <a href="https://github.com/Akiram55">github.com/Akiram55</a>
+      </div>
+    </div>
+    <p class="fine">LAWANI Akiram — Sécurité Informatique, HECM Calavi, Bénin</p>
+  </footer>
+
+</div>
+</body>
+</html>
